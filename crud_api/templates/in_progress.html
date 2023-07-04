@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+
+<div class="container-md">
+    <hr>
+    <a href="{% url 'create' %}">Create task</a><br>
+    Filter by:
+    <a href="{% url '' %}">All</a>
+    <a href="{% url 'completed' %}">Completed</a>
+    <a href="{% url 'in_progress' %}">In progress</a>
+    <div class="accordion" id="accordionFlushExample">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created_at</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+            <tr>
+                <th scope="row"><a href="{% url 'task' task_id=task.id %}">{{task.title}}</a></th>
+                <td>{{task.description}}</td>
+                <td>{{task.created_at|date:'d.m.y H:m'}}</td>
+                <td>
+                    {% if task.completed %}
+                    Y
+                    {% else %}
+                    N
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'done' task_id=task.id %}">done</a>
+                    <a href="{% url 'edit' task_id=task.id %}">edit</a>
+                    <a href="{% url 'delete' task_id=task.id %}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

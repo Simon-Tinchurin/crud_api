@@ -1,0 +1,10 @@
+{% include 'base.html' %}
+
+<h4>Create Task</h4>
+<form class="task-form" method="POST" autocomplete="off">
+    {% csrf_token %}
+    <br/>
+    {{form.as_p}}
+    <br/>
+    <input type="submit" value="Create">
+</form>

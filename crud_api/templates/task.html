@@ -1,0 +1,7 @@
+{% include 'base.html' %}
+
+<h4>Task {{task.id}}</h4>
+<h6>Title: {{task.title}}</h6>
+<h6>Description: {{task.description}}</h6>
+<h6>Is complete: {{task.completed}}</h6>
+<h6>Created at: {{task.created_at|date:'d.m.y H:m'}}</h6>
